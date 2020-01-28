@@ -1,13 +1,17 @@
-package com.iem.inventory.model;
+package com.iem.inventory.entity;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,6 +50,10 @@ public class PurchaseOrder {
 
 	@Column(name = "status")
 	private String status;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="purchaseOrder", fetch = FetchType.LAZY)
+	private Collection<PurchaseOrderDetails> purchaseOrderDetails;
+	
 	
 	public PurchaseOrder() {
 		
@@ -113,6 +121,14 @@ public class PurchaseOrder {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Collection<PurchaseOrderDetails> getPurchaseOrderDetails() {
+		return purchaseOrderDetails;
+	}
+
+	public void setPurchaseOrderDetails(Collection<PurchaseOrderDetails> purchaseOrderDetails) {
+		this.purchaseOrderDetails = purchaseOrderDetails;
 	}
 	
 	

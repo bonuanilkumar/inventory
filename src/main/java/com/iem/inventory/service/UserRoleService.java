@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.iem.inventory.dao.UserRoleRepository;
-import com.iem.inventory.model.UserRole;
+import com.iem.inventory.entity.UserRole;
 
 @Service
 public class UserRoleService {

@@ -1,4 +1,4 @@
-package com.iem.inventory.model;
+package com.iem.inventory.entity;
 
 import java.util.Date;
 
@@ -13,59 +13,59 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "supplier")
-public class Supplier {
-
+@Table(name = "customer")
+public class Customer {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "supplier_id")
-	private Long supplierId;
+	@Column(name = "customer_id")
+	private Long customerId;
 
-	@Column(name = "supplier_name")
-	private String supplierName;
+	@Column(name = "customer_name")
+	private String customerName;
 
 	@Column(name = "phonenumber")
 	private String phoneNumber;
 
 	private String address;
-
+	
 	@Column(name = "contact_name")
 	private String contactName;
-
+	
 	private String mobile;
 
 	@CreationTimestamp
-	@Column(name = "created_date")
-	private Date createdDate;
+    @Column(name = "created_date")
+    private Date createdDate;
 
-	@Column(name = "created_by")
-	private String createdBy;
+    @Column(name = "created_by")
+    private String createdBy;
 
 	@UpdateTimestamp
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
+    @Column(name = "last_updated_date")
+    private Date lastUpdatedDate;
 
-	@Column(name = "last_updated_by")
-	private String lastUpdatedBy;
+    @Column(name = "last_updated_by")
+    private String lastUpdatedBy;
+    
+    public Customer() {
+    	
+    }
 
-	public Supplier() {
-
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public Long getSupplierId() {
-		return supplierId;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public String getSupplierName() {
-		return supplierName;
-	}
-
-	public void setSupplierName(String supplierName) {
-		this.supplierName = supplierName;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public String getPhoneNumber() {
@@ -131,5 +131,7 @@ public class Supplier {
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
+    
+    
 
 }

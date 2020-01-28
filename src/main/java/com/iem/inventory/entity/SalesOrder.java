@@ -1,13 +1,17 @@
-package com.iem.inventory.model;
+package com.iem.inventory.entity;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -49,6 +53,10 @@ public class SalesOrder {
 	
 	@Column(name = "received_by")
 	private String receivedBy;
+	
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="salesOrder", fetch = FetchType.LAZY)
+	private Collection<SalesOrderDetails> salesOrderDetails;
 	
 	public SalesOrder() {
 		
@@ -124,6 +132,14 @@ public class SalesOrder {
 
 	public void setReceivedBy(String receivedBy) {
 		this.receivedBy = receivedBy;
+	}
+
+	public Collection<SalesOrderDetails> getSalesOrderDetails() {
+		return salesOrderDetails;
+	}
+
+	public void setSalesOrderDetails(Collection<SalesOrderDetails> salesOrderDetails) {
+		this.salesOrderDetails = salesOrderDetails;
 	}
 
 	

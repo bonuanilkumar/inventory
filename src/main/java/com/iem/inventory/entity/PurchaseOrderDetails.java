@@ -1,4 +1,4 @@
-package com.iem.inventory.model;
+package com.iem.inventory.entity;
 
 import java.util.Date;
 
@@ -7,21 +7,21 @@ import javax.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "sales_order_details")
-public class SalesOrderDetails {
+@Table(name = "purchase_order_details")
+public class PurchaseOrderDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sale_detail_id")
-	private Long saleOrderDetailId;
+	@Column(name = "po_detail_id")
+	private Long purchaseOrderDetailsId;
+	
+	@ManyToOne
+	@JoinColumn(name = "purchase_order_id")
+	public PurchaseOrder purchaseOrder;
 	
 	@OneToOne
-	@JoinColumn(name = "sales_order_id")
-	public SalesOrder SalesOrder;
-	
-	@OneToOne
-	@JoinColumn(name = "customer_id")
-	public Customer customer;
+	@JoinColumn(name = "supplier_id")
+	public Supplier supplier;
 	
 	@OneToOne
 	@JoinColumn(name = "item_id")
@@ -45,32 +45,32 @@ public class SalesOrderDetails {
 	@Column(name = "last_updated_by")
 	private String lastUpdatedBy;
 	
-	public SalesOrderDetails() {
+	public PurchaseOrderDetails() {
 		
 	}
 
-	public Long getSaleOrderDetailId() {
-		return saleOrderDetailId;
+	public Long getPurchaseOrderDetailsId() {
+		return purchaseOrderDetailsId;
 	}
 
-	public void setSaleOrderDetailId(Long saleOrderDetailId) {
-		this.saleOrderDetailId = saleOrderDetailId;
+	public void setPurchaseOrderDetailsId(Long purchaseOrderDetailsId) {
+		this.purchaseOrderDetailsId = purchaseOrderDetailsId;
 	}
 
-	public SalesOrder getSalesOrder() {
-		return SalesOrder;
+	public PurchaseOrder getPurchaseOrder() {
+		return purchaseOrder;
 	}
 
-	public void setSalesOrder(SalesOrder salesOrder) {
-		SalesOrder = salesOrder;
+	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public Supplier getSupplier() {
+		return supplier;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 	public Item getItem() {
@@ -81,12 +81,12 @@ public class SalesOrderDetails {
 		this.item = item;
 	}
 
-	public double getUnitAmount() {
+	public double getItemAmount() {
 		return unitAmount;
 	}
 
-	public void setUnitAmount(double unitAmount) {
-		this.unitAmount = unitAmount;
+	public void setItemAmount(double itemAmount) {
+		this.unitAmount = itemAmount;
 	}
 
 	public double getTotalAmount() {
@@ -120,5 +120,7 @@ public class SalesOrderDetails {
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
+
+	
 
 }

@@ -1,4 +1,4 @@
-package com.iem.inventory.model;
+package com.iem.inventory.entity;
 
 import java.util.Date;
 
