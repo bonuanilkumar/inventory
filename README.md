@@ -1,4 +1,4 @@
-# inventory
+# IEM
 InventoryMgnt
 
 This application handles all the Order and inventory management requirements for a small scale business.
