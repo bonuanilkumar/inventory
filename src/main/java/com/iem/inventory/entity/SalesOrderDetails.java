@@ -45,6 +45,9 @@ public class SalesOrderDetails {
 	@Column(name = "last_updated_by")
 	private String lastUpdatedBy;
 	
+	private int quantity;
+	
+
 	public SalesOrderDetails() {
 		
 	}
@@ -119,6 +122,14 @@ public class SalesOrderDetails {
 
 	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

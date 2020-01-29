@@ -211,5 +211,7 @@ CREATE TABLE `cgc`.`sales_order` (
     FOREIGN KEY (`item_id`)
     REFERENCES `cgc`.`item` (`item_id`));   
 
-  
+
+ALTER TABLE cgc.sales_order_details ADD quantity int default 0;
+ALTER TABLE cgc.purchase_order_details ADD quantity int default 0;  
   

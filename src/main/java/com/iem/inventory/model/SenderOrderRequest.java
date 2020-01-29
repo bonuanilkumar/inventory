@@ -2,26 +2,21 @@ package com.iem.inventory.model;
 
 import java.util.List;
 
-public class PurchaseOrderRequest {
+public class SenderOrderRequest {
 
-	private long supplierId;
-
+	private long customerId;
 	private double totalAmount;
-
 	private double taxAmount;
+	private String soldBy;
 
-	private String status;
+	private List<SalesOrderDetailRequest> orderDetails;
 
-	private String orderBy;
-
-	private List<PurchaseOrderDetailRequest> orderDetails;
-
-	public long getSupplierId() {
-		return supplierId;
+	public long getCustomerId() {
+		return customerId;
 	}
 
-	public void setSupplierId(long supplierId) {
-		this.supplierId = supplierId;
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
 	}
 
 	public double getTotalAmount() {
@@ -40,46 +35,37 @@ public class PurchaseOrderRequest {
 		this.taxAmount = taxAmount;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getSoldBy() {
+		return soldBy;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setSoldBy(String soldBy) {
+		this.soldBy = soldBy;
 	}
 
-	public String getOrderBy() {
-		return orderBy;
-	}
-
-	public void setOrderBy(String orderBy) {
-		this.orderBy = orderBy;
-	}
-
-	public List<PurchaseOrderDetailRequest> getOrderDetails() {
+	public List<SalesOrderDetailRequest> getOrderDetails() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(List<PurchaseOrderDetailRequest> orderDetails) {
+	public void setOrderDetails(List<SalesOrderDetailRequest> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 
 	@Override
 	public String toString() {
-		return "PurchaseOrderRequest [supplierId=" + supplierId + ", totalAmount=" + totalAmount + ", taxAmount="
-				+ taxAmount + ", status=" + status + ", orderBy=" + orderBy + ", orderDetails=" + orderDetails + "]";
+		return "SenderOrderRequest [customerId=" + customerId + ", totalAmount=" + totalAmount + ", taxAmount="
+				+ taxAmount + ", soldBy=" + soldBy + ", orderDetails=" + orderDetails + "]";
 	}
+	
+	
 
 }
 
-class PurchaseOrderDetailRequest {
+class SalesOrderDetailRequest {
 
-	private Long itemId;
-
+	private long itemId;
 	private double unitAmount;
-
 	private double totalAmount;
-
 	private String status;
 	private int quantity;
 
@@ -91,11 +77,11 @@ class PurchaseOrderDetailRequest {
 		this.quantity = quantity;
 	}
 
-	public Long getItemId() {
+	public long getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(Long itemId) {
+	public void setItemId(long itemId) {
 		this.itemId = itemId;
 	}
 
@@ -125,8 +111,10 @@ class PurchaseOrderDetailRequest {
 
 	@Override
 	public String toString() {
-		return "PurchaseOrderDetailRequest [itemId=" + itemId + ", unitAmount=" + unitAmount + ", totalAmount="
+		return "SalesOrderDetailRequest [itemId=" + itemId + ", unitAmount=" + unitAmount + ", totalAmount="
 				+ totalAmount + ", status=" + status + ", quantity=" + quantity + "]";
 	}
+	
+	
 
 }

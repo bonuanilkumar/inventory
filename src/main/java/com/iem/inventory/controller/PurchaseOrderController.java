@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.iem.inventory.entity.PurchaseOrder;
 import com.iem.inventory.entity.Supplier;
+import com.iem.inventory.model.PurchaseOrderRequest;
 import com.iem.inventory.service.PurchaseOrderService;
 import com.iem.inventory.service.SupplierService;
 
@@ -37,8 +38,12 @@ private static final Logger logger = LoggerFactory.getLogger(PurchaseOrderContro
 	}
 	
 	@PostMapping("/purchaseorder")
-    public ResponseEntity create(@Valid @RequestBody PurchaseOrder purchaseOrder) {
-        return ResponseEntity.ok(service.save(purchaseOrder));
+    public ResponseEntity create(@Valid @RequestBody PurchaseOrderRequest purchaseOrderRequest) {
+		logger.error(purchaseOrderRequest.toString());
+		PurchaseOrder purchaseOrder =  null;//purchaseOrderRequest
+		
+		return ResponseEntity.ok("");
+       // return ResponseEntity.ok(service.save(purchaseOrder));
     }
 
     @GetMapping("/purchases/{id}")
